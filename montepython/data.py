@@ -825,6 +825,17 @@ class Data(object):
                 self.cosmo_arguments['n_cdi'] = self.cosmo_arguments['n_s']
             elif elem == 'beta':
                 self.cosmo_arguments['alpha'] = 2.*self.cosmo_arguments['beta']
+                
+            # WCH add log10(DMmass) and log10(sigma v)
+            elif elem == 'lma':  
+                self.cosmo_arguments['KNS_DMmass'] = 10**self.cosmo_arguments[elem]
+                del self.cosmo_arguments[elem]
+            elif elem == 'lsv':  
+                self.cosmo_arguments['KNS_DMsigmav'] = 10**self.cosmo_arguments[elem] 
+                del self.cosmo_arguments[elem]
+            ###########################################
+            
+            
             elif elem == 'M_tot_NH' or elem == '{\sum}m_nu_NH':
                 # By T. Brinckmann
                 # Normal hierarchy massive neutrinos. Calculates the individual
